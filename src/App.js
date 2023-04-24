@@ -1,7 +1,51 @@
-import "./App.css";
+import "antd/dist/antd.min.css";
+import { Fragment } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./bootstrap.min.css";
+import { publicRoutes } from "./config/appRouter";
+import PrivateRoute from "./config/privateRouter";
+import DefaultLayout from "./layout/DefaultLayout";
 
 function App() {
-  return <div className="App">PROJECT 3</div>;
+  const getLayout = (layout) => {
+    if (layout === null) return Fragment;
+    // else if (layout === "HomePageLayout") return HomePageLayout;
+    else return DefaultLayout;
+  };
+  return (
+    <Router>
+      <ToastContainer className="foo" />
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Layout = getLayout(route.layout);
+            const Page = route.component;
+            const privateRoute = route.isPrivateRouter;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact
+                element={
+                  <Layout>
+                    {privateRoute === true ? (
+                      <PrivateRoute>
+                        <Page />
+                      </PrivateRoute>
+                    ) : (
+                      <Page />
+                    )}
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

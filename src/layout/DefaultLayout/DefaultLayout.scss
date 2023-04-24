@@ -1,0 +1,22 @@
+.wrapper-default-layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .container-content {
+    width: var(--width-content);
+    min-height: 500px;
+    margin-top: var(--margin-top-content);
+    padding-bottom: var(--padding-bottom-content);
+  }
+}
+.wrapper-default-layout::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  bottom: 475px;
+}
