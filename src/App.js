@@ -9,43 +9,43 @@ import PrivateRoute from "./config/privateRouter";
 import DefaultLayout from "./layout/DefaultLayout";
 
 function App() {
-  const getLayout = (layout) => {
-    if (layout === null) return Fragment;
-    // else if (layout === "HomePageLayout") return HomePageLayout;
-    else return DefaultLayout;
-  };
-  return (
-    <Router>
-      <ToastContainer className="foo" />
-      <div className="App">
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Layout = getLayout(route.layout);
-            const Page = route.component;
-            const privateRoute = route.isPrivateRouter;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact
-                element={
-                  <Layout>
-                    {privateRoute === true ? (
-                      <PrivateRoute>
-                        <Page />
-                      </PrivateRoute>
-                    ) : (
-                      <Page />
-                    )}
-                  </Layout>
-                }
-              />
-            );
-          })}
-        </Routes>
-      </div>
-    </Router>
-  );
+	const getLayout = (layout) => {
+		if (layout === null) return Fragment;
+		// else if (layout === "HomePageLayout") return HomePageLayout;
+		else return DefaultLayout;
+	};
+	return (
+		<Router>
+			<ToastContainer className="foo" />
+			<div className="App">
+				<Routes>
+					{publicRoutes.map((route, index) => {
+						const Layout = getLayout(route.layout);
+						const Page = route.component;
+						const privateRoute = route.isPrivateRouter;
+						return (
+							<Route
+								key={index}
+								path={route.path}
+								exact
+								element={
+									<Layout>
+										{privateRoute === true ? (
+											<PrivateRoute>
+												<Page />
+											</PrivateRoute>
+										) : (
+											<Page />
+										)}
+									</Layout>
+								}
+							/>
+						);
+					})}
+				</Routes>
+			</div>
+		</Router>
+	);
 }
 
 export default App;
