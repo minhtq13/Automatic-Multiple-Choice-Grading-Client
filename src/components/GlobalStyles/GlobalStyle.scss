@@ -21,14 +21,17 @@ html *::-webkit-scrollbar {
   border-radius: 0;
   width: 8px;
 }
+
 html *::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.15);
 }
+
 html *::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0);
 }
+
 body {
   font-size: 1.6rem;
   line-height: 1.5;
@@ -43,7 +46,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   line-height: 22px;
-  font-family: "Oswald", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 
 // fix empty right space react-slick
@@ -51,6 +55,7 @@ body {
   right: 10px !important;
   z-index: 1000 !important;
 }
+
 .slick-prev {
   left: 10px !important;
   z-index: 1000 !important;
@@ -61,13 +66,16 @@ body {
   outline: none !important;
   border: none !important;
 }
+
 // font-weight
 .text-bold {
   font-weight: 500;
 }
+
 a {
   color: rgb(90, 86, 86);
 }
+
 .foo {
   margin: 0px;
 }

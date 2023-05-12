@@ -1,0 +1,35 @@
+.a-sidebar-menu-title {
+  margin-left: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.a-sidebar-layout {
+  position: fixed;
+  left: 0px;
+  top: 10px;
+  z-index: 999;
+
+  .a-scrollable {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .ant-btn {
+    margin-left: 10px;
+  }
+
+  .a-sidebar {
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    // .ant-menu {
+    //   border-right: 1px solid #ececf5;
+    //   background-color: #f7f7fa;
+    // }
+    .ant-menu-inline {
+      border-right: 0px;
+    }
+  }
+}

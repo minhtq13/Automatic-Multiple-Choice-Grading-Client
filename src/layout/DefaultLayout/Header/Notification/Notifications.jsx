@@ -1,5 +1,7 @@
-import { BellOutlined } from "@ant-design/icons";
 import { Badge, Popover } from "antd";
+import { useState } from "react";
+import { FaBell } from "react-icons/fa";
+import "./Notifications.scss";
 const notifications = [
 	{
 		id: 1,
@@ -15,24 +17,35 @@ const notifications = [
 	},
 ];
 
-const content = (
-	<div>
-		{notifications.map((notification) => (
-			<div key={notification.id}>
-				<h4>{notification.title}</h4>
-				<p>{notification.description}</p>
-				<small>
-					{new Date(notification.timestamp).toLocaleString()}
-				</small>
-			</div>
-		))}
-	</div>
-);
 const Notifications = () => {
+	const [visible, setVisible] = useState(false);
+
+	const handleVisibleChange = (visible) => {
+		setVisible(visible);
+	};
+	const content = (
+		<div>
+			{notifications.map((notification) => (
+				<div key={notification.id}>
+					<h4>{notification.title}</h4>
+					<p>{notification.description}</p>
+					<small>
+						{new Date(notification.timestamp).toLocaleString()}
+					</small>
+				</div>
+			))}
+		</div>
+	);
 	return (
-		<Popover content={content} placement="bottomRight">
+		<Popover
+			content={content}
+			placement="bottomRight"
+			trigger="click"
+			open={visible}
+			onOpenChange={handleVisibleChange}
+		>
 			<Badge count={notifications.length}>
-				<BellOutlined />
+				<FaBell size={24} />
 			</Badge>
 		</Popover>
 	);
