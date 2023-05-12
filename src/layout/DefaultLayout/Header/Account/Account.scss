@@ -1,0 +1,26 @@
+.a-account-menu {
+
+  .ant-dropdown-trigger {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+
+
+  .ant-dropdown {
+    width: 170px !important;
+  }
+
+}
+
+.user-menu-overlay {
+  min-width: 200px !important;
+
+  .ant-dropdown-menu-title-content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}

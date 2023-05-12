@@ -2,78 +2,123 @@ import {
 	AppstoreOutlined,
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
-	SettingOutlined,
 } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, Menu } from "antd";
 import { useState } from "react";
 import { FaChalkboardTeacher, FaGraduationCap } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./Sidebar.scss";
-import SidebarComponent from "./SidebarComponent";
 
-const getItem = (label, key, icon, children, type) => {
-	return {
-		key,
-		icon,
-		children,
-		label,
-		type,
-	};
-};
-const items = [
+const item = [
 	{
-		item: [
-			getItem("Dashboard", "sub1", <AppstoreOutlined />, [
-				getItem("Admin Dashboard", "1"),
-				getItem("Student Dashboard", "2"),
-				getItem("Teacher Dashboard", "3"),
-			]),
-			getItem("Students", "sub2", <FaGraduationCap />, [
-				getItem("Student List", "4"),
-				getItem("Student View", "5"),
-				getItem("Student Add", "6"),
-				getItem("Student Edit", "7"),
-			]),
-			getItem("Teachers", "sub3", <FaChalkboardTeacher />, [
-				getItem("Teacher List", "8"),
-				getItem("Teacher View", "9"),
-				getItem("Teacher Add", "10"),
-				getItem("Teacher Edit", "11"),
-			]),
-			getItem("Departments", "sub4", <AppstoreOutlined />, [
-				getItem("Department List", "12"),
-				getItem("Department Add", "13"),
-				getItem("Department Edit", "14"),
-			]),
-			getItem("Subjects", "sub5", <AppstoreOutlined />, [
-				getItem("Subject List", "15"),
-				getItem("Subject Add", "16"),
-				getItem("Subject Edit", "17"),
-			]),
+		label: "Main Menu",
+		key: "mainmenu",
+		type: "group",
+		children: [
+			{
+				label: "Dashboard",
+				key: "dashboard",
+				icon: <AppstoreOutlined />,
+				children: [
+					{
+						label: "Student Dashboard",
+						key: "studentdashboard",
+					},
+					{
+						label: "Teacher Dashboard",
+						key: "teacherdashboard",
+					},
+					{
+						label: "Admin Dashboard",
+						key: "admindashboard",
+					},
+				],
+			},
+			{
+				label: "Students",
+				key: "students",
+				icon: <FaGraduationCap />,
+				children: [
+					{ label: "Student List", key: "studentlist" },
+					{ label: "Student View", key: "studentview" },
+					{ label: "Student Add", key: "studentadd" },
+					{ label: "Student Edit", key: "studentedit" },
+				],
+			},
+			{
+				label: "Teachers",
+				key: "Teachers",
+				icon: <FaChalkboardTeacher />,
+				children: [
+					{ label: "Teacher List", key: "teacherlist" },
+					{ label: "Teacher View", key: "teacherview" },
+					{ label: "Teacher Add", key: "teacheradd" },
+					{ label: "Teacher Edit", key: "teacheredit" },
+				],
+			},
+			{
+				label: "Departments",
+				key: "departments",
+				icon: <FaChalkboardTeacher />,
+				children: [
+					{ label: "Department List", key: "departmentlist" },
+					{ label: "Department Add", key: "departmentadd" },
+					{ label: "Department Edit", key: "departmentedit" },
+				],
+			},
+			{
+				label: "Subjects",
+				key: "subjects",
+				icon: <FaChalkboardTeacher />,
+				children: [
+					{ label: "Subject List", key: "subjectlist" },
+					{ label: "Subject Add", key: "subjectadd" },
+					{ label: "Subject Edit", key: "subjectedit" },
+				],
+			},
 		],
-		title: "Main menu",
 	},
 	{
-		item: [
-			getItem("Exam List", "1", <AppstoreOutlined />),
-			getItem("Time Table", "2", <AppstoreOutlined />),
-			getItem("Library", "3", <AppstoreOutlined />),
-			getItem("Blogs", "sub1", <AppstoreOutlined />, [
-				getItem("All blogs", "4"),
-				getItem("Add Blog", "5"),
-				getItem("Edit Blog", "6"),
-			]),
-			getItem("Setting", "7", <SettingOutlined />),
+		label: "Management",
+		key: "management",
+		type: "group",
+		children: [
+			{ label: "Exam List", key: "examlist", icon: <AppstoreOutlined /> },
+			{
+				label: "Time Table",
+				key: "timetable",
+				icon: <AppstoreOutlined />,
+			},
+			{ label: "Library", key: "library", icon: <AppstoreOutlined /> },
+			{
+				label: "Blogs",
+				key: "blog",
+				icon: <AppstoreOutlined />,
+				children: [
+					{ label: "All Blogs", key: "allblogs" },
+					{ label: "Add Blog", key: "addblog" },
+					{ label: "Edit Blog", key: "editblog" },
+				],
+			},
 		],
-		title: "Management",
 	},
 ];
 
 const Sidebar = () => {
 	const [collapsed, setCollapsed] = useState(false);
-
+	const [openKeys, setOpenKeys] = useState([]);
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
+	const onOpenChange = (keys) => {
+		setOpenKeys(keys);
+		console.log(keys);
+	};
+	const toggleMenuCollapse = (info) => {
+		setCollapsed(false);
+		setOpenKeys(info.keyPath);
+	};
+	const navigate = useNavigate();
 	return (
 		<div style={{ width: 256 }} className="a-sidebar-layout">
 			<Button
@@ -83,16 +128,19 @@ const Sidebar = () => {
 			>
 				{collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 			</Button>
-			{items.map((item, index) => {
-				return (
-					<SidebarComponent
-						sidebarTitle={item.title}
-						items={item.item}
-						key={index}
-						collapsed={collapsed}
-					/>
-				);
-			})}
+			<div className="a-sidebar">
+				<Menu
+					mode="inline"
+					onClick={(info) => {
+						toggleMenuCollapse(info);
+						navigate(`/${info.key}`);
+					}}
+					items={item}
+					inlineCollapsed={collapsed}
+					openKeys={openKeys}
+					onOpenChange={(key) => onOpenChange(key)}
+				></Menu>
+			</div>
 		</div>
 	);
 };
