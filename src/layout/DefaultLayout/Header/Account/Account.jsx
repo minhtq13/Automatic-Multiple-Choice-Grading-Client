@@ -37,7 +37,7 @@ const Account = () => {
 					<SettingOutlined />
 					<div className="a-account-content">Setting</div>
 				</Menu.Item>
-				<Menu.Item key="logout" onClick={() => navigate("/auth/login")}>
+				<Menu.Item key="logout" onClick={() => navigate("/login")}>
 					<LogoutOutlined />
 					<div className="a-account-content">Logout</div>
 				</Menu.Item>
