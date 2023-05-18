@@ -6,15 +6,18 @@ import "./Header.scss";
 import Notifications from "./Notification/Notifications";
 
 const Header = () => {
-	const handleSearch = debounce((event) => {
+	const handleOnChange = debounce((event) => {
 		console.log(event.target.value);
 	}, 300);
+	const handleOnSearch = (value) => {
+		console.log(value);
+	};
 	return (
 		<div className="a-header-layout">
 			<div className="a-header-search">
 				<Searchbox
-					onChange={(event) => handleSearch(event)}
-					onSearch={(value) => console.log(value)}
+					onChange={(event) => handleOnChange(event)}
+					onSearch={(value) => handleOnSearch(value)}
 				/>
 			</div>
 			<div className="a-header-noti-account">

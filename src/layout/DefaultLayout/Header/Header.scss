@@ -7,13 +7,14 @@
   right: 30px;
   z-index: 999;
   height: 60px;
-  left: 256px;
+  padding-left: 300px;
+  width: 100vw;
   background-color: #fff;
   border-bottom: 1px solid #f3f3f4;
 
   .a-header-noti-account {
     display: flex;
-    gap: 50px;
+    gap: 30px;
     justify-content: center;
     align-items: center;
   }

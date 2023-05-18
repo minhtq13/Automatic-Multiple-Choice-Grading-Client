@@ -24,6 +24,8 @@ import AddBlog from "../pages/Blogs/AddBlog/AddBlog";
 import AllBlogs from "../pages/Blogs/AllBlogs/AllBlogs";
 import EditBlog from "../pages/Blogs/EditBlog/EditBlog";
 import TimeTable from "../pages/TimeTable/TimeTable";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 const publicRoutes = [
 	{ path: appPath.notFound, component: NotFound },
@@ -51,7 +53,18 @@ const publicRoutes = [
 	{ path: appPath.allBlogs, component: AllBlogs },
 	{ path: appPath.editBlog, component: EditBlog },
 	{ path: appPath.timeTable, component: TimeTable },
-
+	{
+		path: appPath.login,
+		component: Login,
+		layout: "HomePageLayout",
+		isPrivateRouter: true,
+	},
+	{
+		path: appPath.register,
+		component: Register,
+		layout: "HomePageLayout",
+		isPrivateRouter: true,
+	},
 	// private routes
 
 	// { path: appPath.movieChair, component: MovieChair },
