@@ -12,7 +12,7 @@ import SignLayout from "./layout/SignLayout";
 function App() {
 	const getLayout = (layout) => {
 		if (layout === null) return Fragment;
-		else if (layout === "HomePageLayout") return SignLayout;
+		else if (layout === "SignLayout") return SignLayout;
 		else return DefaultLayout;
 	};
 	return (

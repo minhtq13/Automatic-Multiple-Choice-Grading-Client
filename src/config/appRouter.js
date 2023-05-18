@@ -56,14 +56,14 @@ const publicRoutes = [
 	{
 		path: appPath.login,
 		component: Login,
-		layout: "HomePageLayout",
-		isPrivateRouter: true,
+		layout: "SignLayout",
+		// isPrivateRouter: true,
 	},
 	{
 		path: appPath.register,
 		component: Register,
-		layout: "HomePageLayout",
-		isPrivateRouter: true,
+		layout: "SignLayout",
+		// isPrivateRouter: true,
 	},
 	// private routes
 
