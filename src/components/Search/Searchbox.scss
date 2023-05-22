@@ -1,4 +1,5 @@
 .a-search-wrapper {
+  position: relative;
 
   .a-search-error-message {
     font-size: 14px;
@@ -7,7 +8,25 @@
   }
 
   .ant-input-affix-wrapper {
-    height: 32px;
+    height: 40px;
+    z-index: 999;
   }
 
+  .ant-input-search-button {
+    display: none;
+  }
+
+  .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .ant-input-clear-icon {
+    margin-right: 25px;
+  }
 }

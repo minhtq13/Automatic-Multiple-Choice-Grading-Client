@@ -7,11 +7,12 @@ import "./bootstrap.min.css";
 import { publicRoutes } from "./config/appRouter";
 import PrivateRoute from "./config/privateRouter";
 import DefaultLayout from "./layout/DefaultLayout";
+import SignLayout from "./layout/SignLayout";
 
 function App() {
 	const getLayout = (layout) => {
 		if (layout === null) return Fragment;
-		// else if (layout === "HomePageLayout") return HomePageLayout;
+		else if (layout === "SignLayout") return SignLayout;
 		else return DefaultLayout;
 	};
 	return (

@@ -1,0 +1,63 @@
+.a-login {
+
+  .a-login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .a-social-login span,
+    .a-dont-have {
+      font-size: 16px;
+      color: #a0a0a0;
+    }
+
+    .a-dont-have {
+      margin-top: 1.875rem;
+
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ant-form {
+    width: 80%;
+
+    .ant-btn {
+      width: 100%;
+      background-color: var(--name-hust-color);
+      border: 1px solid var(--name-hust-color);
+      border-radius: 0.25rem;
+      height: 40px;
+
+      span {
+        font-size: 18px;
+      }
+    }
+
+    .ant-btn:hover {
+      background-color: #0084FF;
+      border: 1px solid #0084FF
+    }
+
+    input {
+      height: 40px;
+      border-radius: 5px;
+    }
+  }
+
+  .ant-input-affix-wrapper {
+    height: 40px;
+    border-radius: 5px;
+  }
+
+  #normal_login_password {
+    height: 30px !important;
+  }
+
+  .a-forgot-password {
+    color: #a0a0a0;
+    font-size: 18px;
+  }
+}
