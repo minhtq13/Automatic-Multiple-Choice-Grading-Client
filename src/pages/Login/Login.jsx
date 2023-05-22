@@ -18,6 +18,10 @@ const Login = () => {
 					name="email"
 					rules={[
 						{
+							type: "email",
+							message: "The input is not a valid email address",
+						},
+						{
 							required: true,
 							message: "Please input your email!",
 						},
