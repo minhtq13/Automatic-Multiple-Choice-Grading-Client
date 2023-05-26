@@ -1,18 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  chooseChair: [],
+  isCollapse: false
 };
 
 const appReducer = createSlice({
   name: "app",
   initialState,
   reducers: {
-    setChooseChair: (state, action) => {
-      state.chooseChair = [...action.payload];
+    setIsCollapse: (state, action) => {
+      state.isCollapse = action.payload;
     },
+
   },
 });
 
-export const { setChooseChair } = appReducer.actions;
+export const { setIsCollapse } = appReducer.actions;
 export default appReducer.reducer;

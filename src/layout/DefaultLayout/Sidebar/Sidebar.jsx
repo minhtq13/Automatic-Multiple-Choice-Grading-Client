@@ -17,6 +17,9 @@ import { VscLibrary } from "react-icons/vsc";
 import { MdOutlineSubject } from "react-icons/md";
 import { GiTeacher } from "react-icons/gi";
 import "./Sidebar.scss";
+import { useDispatch } from "react-redux";
+import { setIsCollapse } from "../../../redux/slices/appSlice";
+import { useSelector } from "react-redux";
 
 const item = [
 	{
@@ -118,10 +121,13 @@ const item = [
 ];
 
 const Sidebar = () => {
+	const dispatch = useDispatch()
+	const { isCollapse } = useSelector((state) => state.appReducer)
 	const [collapsed, setCollapsed] = useState(false);
 	const [openKeys, setOpenKeys] = useState([]);
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
+		dispatch(setIsCollapse(!isCollapse))
 	};
 	const onOpenChange = (keys) => {
 		setOpenKeys(keys);
@@ -129,6 +135,7 @@ const Sidebar = () => {
 	const toggleMenuCollapse = (info) => {
 		setCollapsed(false);
 		setOpenKeys(info.keyPath);
+		
 	};
 	const navigate = useNavigate();
 	return (
