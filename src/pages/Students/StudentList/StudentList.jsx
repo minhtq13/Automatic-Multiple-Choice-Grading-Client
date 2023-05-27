@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useStudents from "../../../hooks/useStudents";
 const StudentList = () => {
-	return <div className="a-student-list">Student List</div>;
+  const { allStudents, getAllStudents } = useStudents();
+  useEffect(() => {
+    // if (allStudents) {
+    getAllStudents();
+    // }
+  });
+  console.log(allStudents);
+  return <div className="a-student-list">Student List</div>;
 };
 export default StudentList;
