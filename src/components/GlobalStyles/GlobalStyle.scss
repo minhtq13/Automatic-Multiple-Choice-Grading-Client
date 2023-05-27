@@ -1,6 +1,8 @@
 @import "normalize.css";
 // @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap");
+// @import "~bootstrap/scss/maps";
+// @import "~bootstrap/scss/utilities";
 
 :root {
   --width-content: 1150px;
@@ -11,7 +13,7 @@
   --margin-top-content: 75px;
   --padding-bottom-content: 50px;
   // color
-  --name-hust-color: #8c1515;
+  --hust-color: #8c1515;
 }
 
 html {
@@ -47,7 +49,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   line-height: 22px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
 }
 

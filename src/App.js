@@ -9,6 +9,8 @@ import PrivateRoute from "./config/privateRouter";
 import DefaultLayout from "./layout/DefaultLayout";
 import SignLayout from "./layout/SignLayout";
 
+
+
 function App() {
 	const getLayout = (layout) => {
 		if (layout === null) return Fragment;

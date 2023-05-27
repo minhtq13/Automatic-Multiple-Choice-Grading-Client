@@ -1,5 +1,4 @@
 .a-login {
-
   .a-login-form {
     display: flex;
     flex-direction: column;
@@ -26,8 +25,8 @@
 
     .ant-btn {
       width: 100%;
-      background-color: var(--name-hust-color);
-      border: 1px solid var(--name-hust-color);
+      background-color: var(--hust-color);
+      border: 1px solid var(--hust-color);
       border-radius: 0.25rem;
       height: 40px;
 
@@ -37,8 +36,8 @@
     }
 
     .ant-btn:hover {
-      background-color: #0084FF;
-      border: 1px solid #0084FF
+      background-color: #0084ff;
+      border: 1px solid #0084ff;
     }
 
     input {

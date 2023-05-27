@@ -6,7 +6,7 @@ import useNotify from "./useNotify";
 const useStudents = () => {
 
     const notify = useNotify();
-    const [allStudents, setAllStudents] = useState()
+    const [allStudents, setAllStudents] = useState([])
     
     const getAllStudents = (payload = {}) => {
         getAllStudentsService(

@@ -1,12 +1,10 @@
 .a-account-menu {
-
   .ant-dropdown-trigger {
     display: flex;
     gap: 5px;
     align-items: center;
     cursor: pointer;
   }
-
 }
 
 .user-menu-overlay {
@@ -24,10 +22,9 @@
   }
 
   .ant-dropdown-menu-title-content:hover {
-
     .a-account-content,
     .anticon {
-      color: var(--name-hust-color);
+      color: var(--hust-color);
     }
 
     .a-account-content {
