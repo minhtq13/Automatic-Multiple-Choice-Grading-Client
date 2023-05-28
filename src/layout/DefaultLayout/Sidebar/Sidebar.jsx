@@ -1,9 +1,5 @@
-import {
-	AppstoreOutlined,
-	MenuFoldOutlined,
-	MenuUnfoldOutlined,
-} from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { AppstoreOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
 import { useState } from "react";
 import {
 	FaChalkboardTeacher,
@@ -17,8 +13,6 @@ import { VscLibrary } from "react-icons/vsc";
 import { MdOutlineSubject } from "react-icons/md";
 import { GiTeacher } from "react-icons/gi";
 import "./Sidebar.scss";
-import { useDispatch } from "react-redux";
-import { setIsCollapse } from "../../../redux/slices/appSlice";
 import { useSelector } from "react-redux";
 
 const item = [
@@ -121,39 +115,22 @@ const item = [
 ];
 
 const Sidebar = () => {
-	const dispatch = useDispatch()
-	const { isCollapse } = useSelector((state) => state.appReducer)
-	const [collapsed, setCollapsed] = useState(false);
+	const { isCollapse } = useSelector((state) => state.appReducer);
 	const [openKeys, setOpenKeys] = useState([]);
-	const toggleCollapsed = () => {
-		setCollapsed(!collapsed);
-		dispatch(setIsCollapse(!isCollapse))
-	};
 	const onOpenChange = (keys) => {
 		setOpenKeys(keys);
 	};
 	const toggleMenuCollapse = (info) => {
-		setCollapsed(false);
 		setOpenKeys(info.keyPath);
-		
 	};
 	const navigate = useNavigate();
 	return (
 		<div
 			style={{ width: 256 }}
 			className={
-				collapsed ? "a-sidebar-layout a-collapsed" : "a-sidebar-layout"
+				isCollapse ? "a-sidebar-layout a-collapsed" : "a-sidebar-layout"
 			}
 		>
-			<div className="a-button-sidebar">
-				<Button
-					type="primary"
-					onClick={toggleCollapsed}
-					style={{ marginBottom: 16 }}
-				>
-					{collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-				</Button>
-			</div>
 			<div className="a-sidebar">
 				<Menu
 					mode="inline"
@@ -162,7 +139,7 @@ const Sidebar = () => {
 						navigate(`/${info.key}`);
 					}}
 					items={item}
-					inlineCollapsed={collapsed}
+					inlineCollapsed={isCollapse}
 					openKeys={openKeys}
 					onOpenChange={(key) => onOpenChange(key)}
 				></Menu>

@@ -7,7 +7,7 @@
 .a-sidebar-layout {
   position: fixed;
   left: 0px;
-  padding-top: 10px;
+  top: var(--height-header);
   z-index: 1000;
   border-right: 1px solid #ececf5;
   background-color: #f7f7fa;
@@ -17,12 +17,8 @@
     overflow-y: scroll;
   }
 
-  .ant-btn {
-    margin-left: 10px;
-  }
-
   .a-sidebar {
-    height: calc(100vh - 60px);
+    height: calc(100vh - var(--height-header));
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -32,7 +28,7 @@
     }
 
     .ant-menu-inline-collapsed {
-      width: 95px;
+      width: var(--width-sidebar-collapse);
     }
   }
 
@@ -51,17 +47,5 @@
 }
 
 .a-collapsed {
-  width: 95px !important;
-}
-
-.a-button-sidebar {
-  display: flex;
-  width: 370px;
-  border-bottom: 1px solid #ececf5;
-  justify-content: flex-end;
-  height: 50px;
-
-  button {
-    margin: 5px 30px 0px 0px;
-  }
+  width: var(--width-sidebar-collapse) !important;
 }

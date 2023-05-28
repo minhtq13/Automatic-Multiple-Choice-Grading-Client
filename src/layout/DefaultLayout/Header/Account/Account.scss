@@ -16,6 +16,10 @@
   position: fixed;
   top: 60px !important;
 
+  li:first-child {
+    height: 80px !important;
+  }
+
   .ant-dropdown-menu-title-content {
     display: flex;
     gap: 10px;
@@ -41,20 +45,28 @@
   }
 
   .ant-dropdown-menu-item {
-    height: 45px !important;
+    height: 45px;
+    padding: 0px;
   }
 
   .a-menu-item {
     border-bottom: 1px solid #e3e3e3;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 45px;
+    width: 250px;
+    padding-left: 20px;
   }
 }
 
-.a-account-role {
+.a-account-role.a-menu-item {
   align-items: center;
   display: flex;
   padding: 10px 20px;
   border-bottom: 1px solid #e3e3e3;
   background-color: #f7f7fa;
+  height: 80px;
 
   .a-name-role {
     display: flex;

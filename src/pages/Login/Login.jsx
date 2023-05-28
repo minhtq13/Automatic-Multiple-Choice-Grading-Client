@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-import SignLayout from "../SignLayout/SignLayout";
+import SignLayout from "../../components/SignLayout/SignLayout";
 import "./Login.scss";
 const Login = () => {
 	const onFinish = (values) => {

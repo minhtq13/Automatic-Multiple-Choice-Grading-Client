@@ -4,19 +4,41 @@ import Searchbox from "../../../components/Search/Searchbox";
 import Account from "./Account/Account";
 import "./Header.scss";
 import Notifications from "./Notification/Notifications";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Button } from "antd";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { setIsCollapse } from "../../../redux/slices/appSlice";
 
 const Header = () => {
-	const { isCollapse } = useSelector((state) => state.appReducer)
-	console.log(isCollapse);
+	const dispatch = useDispatch();
+	const { isCollapse } = useSelector((state) => state.appReducer);
 	const handleOnChange = debounce((event) => {
 		console.log(event.target.value);
 	}, 300);
 	const handleOnSearch = (value) => {
 		console.log(value);
 	};
+	const toggleCollapsed = () => {
+		dispatch(setIsCollapse(!isCollapse));
+	};
 	return (
 		<div className="a-header-layout">
+			<div
+				className={
+					isCollapse
+						? "a-header-logo a-logo-collapsed"
+						: "a-header-logo"
+				}
+			></div>
+			<div className="a-button-header">
+				<Button
+					type="primary"
+					onClick={toggleCollapsed}
+					style={{ marginBottom: 16 }}
+				>
+					{isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+				</Button>
+			</div>
 			<div className="a-header-search">
 				<Searchbox
 					onChange={(event) => handleOnChange(event)}
