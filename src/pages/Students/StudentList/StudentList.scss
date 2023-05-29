@@ -1,0 +1,35 @@
+.a-student-list {
+  .header-student-list {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    p {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--hust-color);
+    }
+    .block-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .options {
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        gap: 6px;
+      }
+    }
+  }
+  .student-list-table {
+    border: 1px solid #ccc;
+    padding: 24px;
+
+    .ant-pagination-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

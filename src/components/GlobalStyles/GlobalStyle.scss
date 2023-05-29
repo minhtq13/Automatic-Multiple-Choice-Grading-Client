@@ -6,14 +6,15 @@
   --width-content: 1150px;
   --padding-left-header: calc((100vw - 1150px) / 2);
   --width-content-admin: 902px;
-  // Default layout
+
+  // Layout
   --margin-top-content: 75px;
   --padding-bottom-content: 50px;
-  // color
-  --name-hust-color: #8c1515;
   --height-header: 60px;
   --width-sidebar-collapse: 95px;
   --width-sidebar: 256px;
+  // color
+  --hust-color: #8c1515;
 }
 
 html {
@@ -49,7 +50,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   line-height: 22px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
 }
 
@@ -82,3 +83,9 @@ a {
 .foo {
   margin: 0px;
 }
+// .ant-menu-submenu-title:hover {
+//   color: var(--hust-color) !important;
+// }
+// .ant-menu-item:hover {
+//   color: var(--hust-color) !important;
+// }
