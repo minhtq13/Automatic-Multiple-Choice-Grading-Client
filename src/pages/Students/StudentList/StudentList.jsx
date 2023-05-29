@@ -107,15 +107,15 @@ const StudentList = () => {
       <div className="header-student-list">
         <p>Danh sách sinh viên</p>
         <div className="block-button">
-          <Button className="options" danger>
+          <Button className="options">
             <img src={exportIcon} alt="Export Icon" />
             Export
           </Button>
-          <Button className="options" danger>
+          <Button className="options">
             <img src={deleteIcon} alt="Delete Icon" />
             Delete
           </Button>
-          <Button className="options" danger>
+          <Button className="options">
             <img src={addIcon} alt="Add Icon" />
             Add Student
           </Button>

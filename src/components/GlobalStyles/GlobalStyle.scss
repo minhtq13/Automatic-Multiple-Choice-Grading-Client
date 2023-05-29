@@ -1,17 +1,18 @@
 @import "normalize.css";
 // @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap");
-// @import "~bootstrap/scss/maps";
-// @import "~bootstrap/scss/utilities";
 
 :root {
   --width-content: 1150px;
   --padding-left-header: calc((100vw - 1150px) / 2);
   --width-content-admin: 902px;
 
-  // Default layout
+  // Layout
   --margin-top-content: 75px;
   --padding-bottom-content: 50px;
+  --height-header: 60px;
+  --width-sidebar-collapse: 95px;
+  --width-sidebar: 256px;
   // color
   --hust-color: #8c1515;
 }
@@ -81,4 +82,8 @@ a {
 
 .foo {
   margin: 0px;
+}
+
+button:focus {
+  outline: none !important;
 }

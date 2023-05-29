@@ -1,6 +1,5 @@
-import { Button, Form, Input } from "antd";
 import React from "react";
-
+import { Form, Input, Button } from "antd";
 import SignFragment from "../../components/SignFragment/SignFragment";
 import "./Login.scss";
 const Login = () => {
