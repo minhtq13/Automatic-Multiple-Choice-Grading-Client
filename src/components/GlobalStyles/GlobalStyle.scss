@@ -83,9 +83,7 @@ a {
 .foo {
   margin: 0px;
 }
-// .ant-menu-submenu-title:hover {
-//   color: var(--hust-color) !important;
-// }
-// .ant-menu-item:hover {
-//   color: var(--hust-color) !important;
-// }
+
+button:focus {
+  outline: none !important;
+}

@@ -6,15 +6,23 @@ import GlobalStyles from "../src/components/GlobalStyles";
 import App from "./App";
 import store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
-
+import { ConfigProvider } from "antd";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<Provider store={store}>
-		<GlobalStyles>
-			<App />
-		</GlobalStyles>
-	</Provider>
+  <Provider store={store}>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#8c1515",
+        },
+      }}
+    >
+      <GlobalStyles>
+        <App />
+      </GlobalStyles>
+    </ConfigProvider>
+  </Provider>
 );
 
 reportWebVitals();
