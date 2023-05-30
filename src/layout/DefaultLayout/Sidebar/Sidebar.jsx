@@ -112,7 +112,6 @@ const item = [
 const Sidebar = () => {
   const location = useLocation();
   const pathName = location.pathname.split("/")[1];
-
   const { isCollapse } = useSelector((state) => state.appReducer);
   const [openKeys, setOpenKeys] = useState();
   const onOpenChange = (keys) => {
