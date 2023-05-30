@@ -1,13 +1,13 @@
 import { AppstoreOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaRegCalendarAlt } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { ImBlogger } from "react-icons/im";
 import { MdOutlineSubject } from "react-icons/md";
 import { VscLibrary } from "react-icons/vsc";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Sidebar.scss";
 
 const item = [
@@ -110,15 +110,26 @@ const item = [
 ];
 
 const Sidebar = () => {
+  const location = useLocation();
+  const pathName = location.pathname.split("/")[1];
+
   const { isCollapse } = useSelector((state) => state.appReducer);
-  const [openKeys, setOpenKeys] = useState([]);
+  const [openKeys, setOpenKeys] = useState();
   const onOpenChange = (keys) => {
     setOpenKeys(keys);
   };
   const toggleMenuCollapse = (info) => {
     setOpenKeys(info.keyPath);
   };
+  const [currentActive, setCurrentActive] = useState(pathName);
   const navigate = useNavigate();
+  const handleClickMenu = (info) => {
+    toggleMenuCollapse(info);
+    navigate(`/${info.key}`);
+  };
+  useEffect(() => {
+    setCurrentActive(pathName);
+  }, [pathName]);
 
   return (
     <div
@@ -128,12 +139,10 @@ const Sidebar = () => {
       <div className="a-sidebar">
         <Menu
           mode="inline"
-          onClick={(info) => {
-            toggleMenuCollapse(info);
-            navigate(`/${info.key}`);
-          }}
+          onClick={(info) => handleClickMenu(info)}
           items={item}
           inlineCollapsed={isCollapse}
+          selectedKeys={[currentActive]}
           openKeys={openKeys}
           onOpenChange={(key) => onOpenChange(key)}
         ></Menu>

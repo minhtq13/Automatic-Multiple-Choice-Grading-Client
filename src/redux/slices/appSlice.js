@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isCollapse: false
+  isCollapse: false,
 };
 
 const appReducer = createSlice({
@@ -11,7 +11,6 @@ const appReducer = createSlice({
     setIsCollapse: (state, action) => {
       state.isCollapse = action.payload;
     },
-
   },
 });
 

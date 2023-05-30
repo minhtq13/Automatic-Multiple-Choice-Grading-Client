@@ -6,7 +6,7 @@
     justify-content: space-between;
     margin-bottom: 12px;
     p {
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 600;
       color: var(--hust-color);
     }
@@ -25,12 +25,18 @@
   }
   .student-list-table {
     border: 1px solid #ccc;
-    padding: 24px;
+    padding: 12px;
+    .ant-table-content {
+      min-height: 500px;
+    }
 
     .ant-pagination-item {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .ant-table-pagination.ant-pagination {
+      margin: 12px 0;
     }
   }
 }

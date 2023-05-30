@@ -16,6 +16,7 @@ function App() {
     else if (layout === "SignLayout") return SignLayout;
     else return DefaultLayout;
   };
+
   return (
     <Router>
       <ToastContainer className="foo" />

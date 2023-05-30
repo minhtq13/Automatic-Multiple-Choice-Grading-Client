@@ -6,6 +6,7 @@ import useStudents from "../../../hooks/useStudents";
 import exportIcon from "../../../assets/images/export-icon.svg";
 import deleteIcon from "../../../assets/images/delete-icon.svg";
 import addIcon from "../../../assets/images/add-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const StudentList = () => {
   const { allStudents, getAllStudents } = useStudents();
@@ -13,6 +14,8 @@ const StudentList = () => {
     getAllStudents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const navigate = useNavigate();
+  console.log(allStudents);
   const columns = [
     {
       title: "Full Name",
@@ -51,10 +54,11 @@ const StudentList = () => {
             let color = "geekblue";
             if (gender === "MALE") {
               color = "green";
-            }
+            } else if (gender === "FEMALE") color = "geekblue";
+            else color = "red";
             return (
               <Tag color={color} key={gender}>
-                {gender.toUpperCase()}
+                {gender ? gender?.toUpperCase() : "UNKNOWN"}
               </Tag>
             );
           })}
@@ -78,7 +82,8 @@ const StudentList = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a>Edit</a>
+          {/* <Button danger>Edit</Button> */}
+          Edit
         </Space>
       ),
     },
@@ -101,6 +106,9 @@ const StudentList = () => {
     onChange: onSelectChange,
     selections: [Table.SELECTION_ALL],
   };
+  const handleClickAddStudent = () => {
+    navigate("/student-add");
+  };
 
   return (
     <div className="a-student-list">
@@ -115,7 +123,7 @@ const StudentList = () => {
             <img src={deleteIcon} alt="Delete Icon" />
             Delete
           </Button>
-          <Button className="options">
+          <Button className="options" onClick={handleClickAddStudent}>
             <img src={addIcon} alt="Add Icon" />
             Add Student
           </Button>
@@ -128,7 +136,7 @@ const StudentList = () => {
           dataSource={dataFetch}
           rowSelection={rowSelection}
           pagination={{
-            pageSize: 10,
+            pageSize: 8,
           }}
         />
       </div>
