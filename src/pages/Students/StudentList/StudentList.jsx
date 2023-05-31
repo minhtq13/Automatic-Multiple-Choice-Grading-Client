@@ -7,6 +7,8 @@ import exportIcon from "../../../assets/images/export-icon.svg";
 import deleteIcon from "../../../assets/images/delete-icon.svg";
 import addIcon from "../../../assets/images/add-icon.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import useNotify from "../../../hooks/useNotify";
 
 const StudentList = () => {
   const { allStudents, getAllStudents } = useStudents();
@@ -14,8 +16,9 @@ const StudentList = () => {
     getAllStudents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const notify = useNotify();
   const navigate = useNavigate();
-  console.log(allStudents);
+
   const columns = [
     {
       title: "Full Name",
@@ -110,12 +113,33 @@ const StudentList = () => {
     navigate("/student-add");
   };
 
+  const handleExport = () => {
+    axios({
+      url: "http://localhost:8000/api/v1/student/export", // Replace with your API endpoint
+      method: "GET",
+      responseType: "blob", // Set the response type to 'blob'
+    })
+      .then((response) => {
+        // Create a download link
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", `Students-${Date.now()}.xlsx`); // Set the desired file name
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch((error) => {
+        notify.error("Error downloading Excel file!");
+        console.error("Error downloading Excel file:", error);
+      });
+  };
+
   return (
     <div className="a-student-list">
       <div className="header-student-list">
         <p>Danh sách sinh viên</p>
         <div className="block-button">
-          <Button className="options">
+          <Button className="options" onClick={handleExport}>
             <img src={exportIcon} alt="Export Icon" />
             Export
           </Button>

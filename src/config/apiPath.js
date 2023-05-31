@@ -2,10 +2,10 @@
 export const BASE_URL = "http://localhost:8000";
 
 export const apiPath = {
-    // Authentication
-    login: BASE_URL + "/api/v1/auth/signin",
-    register: BASE_URL + "/api/v1/auth/signup",
-    refreshToken: BASE_URL + "/api/v1/auth/refresh-token",
-    // Student
-    allStudents:  BASE_URL + "/api/v1/student/list",
+  // Authentication
+  login: BASE_URL + "/api/v1/auth/signin",
+  register: BASE_URL + "/api/v1/auth/signup",
+  refreshToken: BASE_URL + "/api/v1/auth/refresh-token",
+  // Student
+  allStudents: BASE_URL + "/api/v1/student/list",
 };

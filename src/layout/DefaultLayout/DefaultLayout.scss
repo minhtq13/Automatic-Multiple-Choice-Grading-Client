@@ -5,14 +5,17 @@
   padding-top: 60px;
 
   .container-content {
+    margin-left: var(--width-sidebar);
     width: calc(100vw - var(--width-sidebar));
     padding: 30px 60px;
-    margin-left: var(--width-sidebar);
     min-height: 1300px;
   }
 
   .container-content-collapse {
     margin-left: var(--width-sidebar-collapse) !important;
+    width: calc(100vw - var(--width-sidebar-collapse));
+    padding: 30px 60px;
+    min-height: 1300px;
   }
 }
 
