@@ -17,7 +17,9 @@ const useStudents = () => {
           notify.warning(err.response.data.message || "Permission denied");
         }
         if (err.response.status === 404) {
-          notify.warning(err.response.data.message || "No information in database");
+          notify.warning(
+            err.response.data.message || "No information in database"
+          );
         }
       }
     );

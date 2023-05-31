@@ -2,12 +2,33 @@ import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
 import SignFragment from "../../components/SignFragment/SignFragment";
 import "./Register.scss";
+import useNotify from "../../hooks/useNotify";
+import { useNavigate } from "react-router-dom";
+import { appPath } from "../../config/appPath";
+import { registerService } from "../../services/loginService";
+
 const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [loading, setLoading] = useState(false)
+  const [registerResult, setRegisterResult] = useState("");
+  const notify = useNotify();
+  const navigate = useNavigate();
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    setLoading(true)
+    registerService(
+      { username: values.username, email: values.email, password: values.password },
+      (res) => {
+        setLoading(false)
+        setRegisterResult(res.data.message);
+        notify.success(`Đăng ký tài khoản thành công! Vui lòng vào email để xác minh tài khoản!`);
+        navigate(appPath.login);
+      },
+      (error) => {
+        setRegisterResult("error")
+        setLoading(false)
+      }
+    );
   };
 
   const handlePasswordChange = (e) => {
@@ -32,7 +53,7 @@ const Register = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="name"
+        name="username"
         rules={[
           {
             required: true,
@@ -40,7 +61,7 @@ const Register = () => {
           },
         ]}
       >
-        <Input placeholder="Name" />
+        <Input placeholder="User name" />
       </Form.Item>
       <Form.Item
         name="email"
@@ -90,8 +111,9 @@ const Register = () => {
           onChange={handleConfirmPasswordChange}
         />
       </Form.Item>
+      {registerResult === "error" && <div className="error-register">Tên đăng nhập hoặc email đã tồn tại!</div>}
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Register
         </Button>
       </Form.Item>

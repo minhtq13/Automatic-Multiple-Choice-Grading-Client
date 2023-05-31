@@ -14,6 +14,10 @@
   position: fixed;
   top: 60px !important;
 
+  li {
+    padding: 0px !important;
+  }
+
   li:first-child {
     height: 80px !important;
   }
@@ -26,6 +30,7 @@
   }
 
   .ant-dropdown-menu-title-content:hover {
+
     .a-account-content,
     .anticon {
       color: var(--hust-color);
