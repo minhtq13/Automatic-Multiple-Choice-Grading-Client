@@ -1,0 +1,102 @@
+.a-student-info {
+  .a-info-header {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--hust-color);
+    padding: 20px;
+  }
+}
+
+.info-student-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 30px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-top: 20px;
+
+  .a-info-student-header {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--hust-color);
+  }
+
+  .ant-form-item {
+    width: 45%;
+    margin-bottom: 40px;
+
+    .ant-picker {
+      width: 100%;
+      height: 45px;
+    }
+
+    .ant-select-selector {
+      height: 45px;
+      position: relative;
+
+      .ant-select-selection-item,
+      .ant-select-selection-placeholder {
+        position: absolute;
+        top: 6px;
+      }
+    }
+
+    .ant-row {
+      position: relative;
+      display: block;
+    }
+
+    .ant-input {
+      height: 45px;
+    }
+
+    .ant-input-password {
+      height: 45px;
+    }
+
+    label::after {
+      content: "*" !important;
+      color: #ff4d4f;
+    }
+
+    label::before {
+      content: "" !important;
+    }
+
+    #info-student-form_password {
+      height: 35px !important;
+    }
+
+    .ant-form-item-label {
+      position: absolute;
+      top: -15px;
+      z-index: 999;
+      left: 15px;
+      background-color: #fff;
+      height: 25px;
+
+      label {
+        height: 20px;
+        margin: 0px;
+      }
+    }
+  }
+
+  .a-btn-info {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+
+}
