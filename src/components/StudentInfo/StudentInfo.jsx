@@ -48,7 +48,7 @@ const StudentInfo = ({
 					<Input placeholder="Enter user name" />
 				</Form.Item>
 				<Form.Item
-					name="Code"
+					name="code"
 					label="MSSV"
 					colon={true}
 					rules={[

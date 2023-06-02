@@ -4,14 +4,16 @@ import StudentInfo from "../../../components/StudentInfo/StudentInfo";
 import { updateStudentsService } from "../../../services/studentsService";
 import useNotify from "../../../hooks/useNotify";
 import { formatDate } from "../../../utils/tools";
+import { useSelector } from "react-redux";
 
 const StudentEdit = () => {
 	const [loading, setLoading] = useState(false);
+	const { selectedItem } = useSelector((state) => state.appReducer)
 	const notify = useNotify();
 	const onFinish = (value) => {
 		setLoading(true);
 		updateStudentsService(
-			100,
+			selectedItem ? selectedItem.key : null,
 			{ ...value, birthday: formatDate(value.birthday) },
 			(res) => {
 				setLoading(false);
@@ -30,6 +32,7 @@ const StudentEdit = () => {
 	const genderOnchange = (value) => {
 		console.log(value);
 	};
+	console.log(selectedItem)
 	return (
 		<div className="a-student-add">
 			<StudentInfo
@@ -38,7 +41,7 @@ const StudentEdit = () => {
 				datePickerOnchange={datePickerOnchange}
 				genderOnchange={genderOnchange}
 				btnText="Cập nhật"
-				initialValues={{ remember: false }}
+				initialValues={{ remember: false, fullName: selectedItem ? selectedItem.fullName : "", username: selectedItem ? selectedItem.username : "", email: selectedItem ? selectedItem.email : "", code: selectedItem ? selectedItem.code : "", phoneNumber: selectedItem ? selectedItem.phoneNumber : "" }}
 				loading={loading}
 			/>
 		</div>
