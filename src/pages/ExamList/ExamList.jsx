@@ -9,19 +9,17 @@ const ExamList = () => {
   };
 
   const handleImageUpload = async () => {
-    try {
+    if (selectedImage) {
       const formData = new FormData();
       formData.append("image", selectedImage);
-
-      // Gửi request POST đến server để lưu ảnh vào database
-      // eslint-disable-next-line no-unused-vars
-      const response = await axios.post("/api/upload", formData);
-
-      // Xử lý response từ server (nếu cần)
-
-      console.log("Image uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading image:", error);
+      axios
+        .post("/api/v1/upload", formData)
+        .then((response) => {
+          console.log(response.data); // Xử lý phản hồi từ backend (nếu cần)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 
