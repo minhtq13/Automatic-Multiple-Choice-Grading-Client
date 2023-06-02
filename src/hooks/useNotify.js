@@ -5,7 +5,7 @@ const useNotify = () => {
   const error = (message, position = "top-right", autoClose, icon) => {
     toast.error(message, {
       position: position,
-      autoClose: autoClose || 3000,
+      autoClose: autoClose || 2000,
       hideProgressBar: true,
       theme: "colored",
       closeButton: false,
@@ -15,7 +15,7 @@ const useNotify = () => {
   const success = (message, position = "top-right", autoClose) => {
     toast.success(message, {
       position: position,
-      autoClose: autoClose || 3000,
+      autoClose: autoClose || 2000,
       hideProgressBar: true,
       theme: "colored",
       closeButton: false,
@@ -25,7 +25,7 @@ const useNotify = () => {
   const warning = (message, position = "top-right", autoClose) => {
     toast.warning(message, {
       position: position,
-      autoClose: autoClose || 3000,
+      autoClose: autoClose || 2000,
       hideProgressBar: true,
       theme: "colored",
       closeButton: false,

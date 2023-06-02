@@ -9,9 +9,27 @@ import addIcon from "../../../assets/images/add-icon.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useNotify from "../../../hooks/useNotify";
+import { appPath } from "../../../config/appPath";
+import { useDispatch } from "react-redux";
+import { setSelectedItem } from "../../../redux/slices/appSlice";
+import { deleteStudentsService } from "../../../services/studentsService";
 
 const StudentList = () => {
-  const { allStudents, getAllStudents } = useStudents();
+  const [deleteDisable, setDeleteDisable] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const { allStudents, getAllStudents, tableLoading } = useStudents();
+  const [deleteKey, setDeleteKey] = useState(null);
+  const dispatch = useDispatch();
+  const onRow = (record) => {
+    return {
+      onClick: () => {
+        dispatch(setSelectedItem(record));
+      },
+    };
+  };
+  const handleEdit = () => {
+    navigate(appPath.studentEdit);
+  };
   useEffect(() => {
     getAllStudents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,9 +102,10 @@ const StudentList = () => {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <Space size="middle">
-          {/* <Button danger>Edit</Button> */}
-          Edit
+        <Space size="middle" style={{ cursor: "pointer" }}>
+          <Button danger onClick={handleEdit}>
+            Edit
+          </Button>
         </Space>
       ),
     },
@@ -99,10 +118,19 @@ const StudentList = () => {
     phoneNumber: obj.phoneNumber,
     birthday: obj.birthday,
     gender: [obj.gender],
+    code: obj.code,
+    id: obj.id,
   }));
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
+    if (newSelectedRowKeys.length === 1) {
+      setDeleteKey(dataFetch.find((item) => item.key === newSelectedRowKeys[0]).id);
+      setDeleteDisable(false);
+      console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]));
+    } else {
+      setDeleteDisable(true);
+    }
   };
   const rowSelection = {
     selectedRowKeys,
@@ -112,7 +140,22 @@ const StudentList = () => {
   const handleClickAddStudent = () => {
     navigate("/student-add");
   };
-
+  const handleDelete = () => {
+    setLoading(true);
+    deleteStudentsService(
+      deleteKey,
+      null,
+      (res) => {
+        setLoading(false);
+        notify.success("Xoá sinh viên thành công!");
+        getAllStudents();
+      },
+      (error) => {
+        setLoading(false);
+        notify.error("Lỗi xoá sinh viên!");
+      }
+    );
+  };
   const handleExport = () => {
     axios({
       url: "http://localhost:8000/api/v1/student/export", // Replace with your API endpoint
@@ -143,7 +186,12 @@ const StudentList = () => {
             <img src={exportIcon} alt="Export Icon" />
             Export
           </Button>
-          <Button className="options">
+          <Button
+            className="options"
+            disabled={deleteDisable}
+            onClick={handleDelete}
+            loading={loading}
+          >
             <img src={deleteIcon} alt="Delete Icon" />
             Delete
           </Button>
@@ -162,6 +210,8 @@ const StudentList = () => {
           pagination={{
             pageSize: 8,
           }}
+          onRow={onRow}
+          loading={tableLoading}
         />
       </div>
     </div>
