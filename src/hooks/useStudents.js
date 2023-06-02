@@ -5,14 +5,17 @@ import useNotify from "./useNotify";
 const useStudents = () => {
   const notify = useNotify();
   const [allStudents, setAllStudents] = useState([]);
+  const [tableLoading, setTableLoading] = useState(true);
 
   const getAllStudents = (payload = {}) => {
     getAllStudentsService(
       payload,
       (res) => {
         setAllStudents(res.data);
+        setTableLoading(false);
       },
       (err) => {
+        setTableLoading(true);
         if (err.response.status === 401) {
           notify.warning(err.response.data.message || "Permission denied");
         }
@@ -28,6 +31,7 @@ const useStudents = () => {
   return {
     allStudents,
     getAllStudents,
+    tableLoading
   };
 };
 

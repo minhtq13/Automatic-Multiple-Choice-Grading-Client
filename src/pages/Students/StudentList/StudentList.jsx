@@ -17,7 +17,7 @@ import { deleteStudentsService } from "../../../services/studentsService";
 const StudentList = () => {
   const [deleteDisable, setDeleteDisable] = useState(true);
   const [loading, setLoading] = useState(false);
-  const { allStudents, getAllStudents } = useStudents();
+  const { allStudents, getAllStudents, tableLoading } = useStudents();
   const [deleteKey, setDeleteKey] = useState(null);
   const dispatch = useDispatch();
   const onRow = (record) => {
@@ -125,7 +125,6 @@ const StudentList = () => {
     if (newSelectedRowKeys.length === 1) {
       setDeleteKey(dataFetch.find((item) => item.key === newSelectedRowKeys[0]).id);
       setDeleteDisable(false)
-      console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]))
     } else {
       setDeleteDisable(true)
     }
@@ -146,6 +145,7 @@ const StudentList = () => {
       (res) => {
         setLoading(false);
         notify.success("Xoá sinh viên thành công!");
+        getAllStudents();
       },
       (error) => {
         setLoading(false);
@@ -203,6 +203,7 @@ const StudentList = () => {
             pageSize: 8,
           }}
           onRow={onRow}
+          loading={tableLoading}
         />
       </div>
     </div>
