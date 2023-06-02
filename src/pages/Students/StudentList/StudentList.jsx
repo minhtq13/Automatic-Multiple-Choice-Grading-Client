@@ -29,7 +29,7 @@ const StudentList = () => {
   };
   const handleEdit = () => {
     navigate(appPath.studentEdit);
-  }
+  };
   useEffect(() => {
     getAllStudents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,7 +103,9 @@ const StudentList = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle" style={{ cursor: "pointer" }}>
-          <Button danger onClick={handleEdit} >Edit</Button>
+          <Button danger onClick={handleEdit}>
+            Edit
+          </Button>
         </Space>
       ),
     },
@@ -117,17 +119,17 @@ const StudentList = () => {
     birthday: obj.birthday,
     gender: [obj.gender],
     code: obj.code,
-    id: obj.id
+    id: obj.id,
   }));
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
     if (newSelectedRowKeys.length === 1) {
       setDeleteKey(dataFetch.find((item) => item.key === newSelectedRowKeys[0]).id);
-      setDeleteDisable(false)
-      console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]))
+      setDeleteDisable(false);
+      console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]));
     } else {
-      setDeleteDisable(true)
+      setDeleteDisable(true);
     }
   };
   const rowSelection = {
@@ -152,7 +154,7 @@ const StudentList = () => {
         notify.error("Lỗi xoá sinh viên!");
       }
     );
-  }
+  };
   const handleExport = () => {
     axios({
       url: "http://localhost:8000/api/v1/student/export", // Replace with your API endpoint
@@ -183,7 +185,12 @@ const StudentList = () => {
             <img src={exportIcon} alt="Export Icon" />
             Export
           </Button>
-          <Button className="options" disabled={deleteDisable} onClick={handleDelete} loading={loading}>
+          <Button
+            className="options"
+            disabled={deleteDisable}
+            onClick={handleDelete}
+            loading={loading}
+          >
             <img src={deleteIcon} alt="Delete Icon" />
             Delete
           </Button>
