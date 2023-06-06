@@ -1,7 +1,6 @@
 import { DatePicker, Form, Input, Select, Button } from "antd";
 import "./StudentInfo.scss";
 import React from "react";
-import dayjs from "dayjs";
 const StudentInfo = ({
   onFinish,
   initialValues,
@@ -130,7 +129,6 @@ const StudentInfo = ({
         >
           <DatePicker
             onChange={datePickerOnchange}
-            defaultValue={dayjs(birthday, dateFormat)}
             format={dateFormat}
           ></DatePicker>
         </Form.Item>
