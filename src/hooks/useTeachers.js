@@ -20,9 +20,7 @@ const useTeachers = () => {
           notify.warning(err.response.data.message || "Permission denied");
         }
         if (err.response.status === 404) {
-          notify.warning(
-            err.response.data.message || "No information in database"
-          );
+          notify.warning(err.response.data.message || "No information in database");
         }
       }
     );
@@ -31,7 +29,7 @@ const useTeachers = () => {
   return {
     allTeachers,
     getAllTeachers,
-    tableLoading
+    tableLoading,
   };
 };
 
