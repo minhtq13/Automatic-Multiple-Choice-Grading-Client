@@ -1,29 +1,25 @@
 .modal-popup-component {
     .ant-modal-content {
-        width: 989px !important;
+        width: 800px !important;
         height: 388px !important;
         align-items: center !important;
-        position: relative !important;
-        right: 50% !important;
-        top: 50% !important;
-        transform: translate(0%, 10%) !important;
+        transform: translate(0%, 50%) !important;
         border-radius: 6px !important;
     }
+
     .ant-modal-footer {
-        position: absolute;
-        height: 104px !important;
+        height: 64px !important;
         display: flex !important;
-        align-items: center !important;
-        width: 100% !important;
-        display: flex;
         justify-content: flex-end;
         gap: 12px;
     }
+
     .ant-modal-header {
         border-radius: 6px !important;
         height: 64px !important;
         background: #fff;
     }
+
     .ant-modal-title {
         position: absolute;
         left: 30px;
@@ -31,9 +27,11 @@
         font-weight: 600 !important;
         font-size: 16px !important;
     }
+
     .ant-modal-body {
         text-align: center;
     }
+
     .modal-popup-content {
         p {
             font-size: 20px;
