@@ -7,7 +7,6 @@ import exportIcon from "../../../assets/images/export-icon.svg";
 import deleteIcon from "../../../assets/images/delete-icon.svg";
 import addIcon from "../../../assets/images/add-icon.svg";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import useNotify from "../../../hooks/useNotify";
 import { appPath } from "../../../config/appPath";
 import { useDispatch } from "react-redux";
@@ -149,6 +148,7 @@ const TeacherList = () => {
 				setLoading(false);
 				notify.success("Xoá giảng viên thành công!");
 				getAllTeachers();
+				setSelectedRowKeys([])
 			},
 			(error) => {
 				setLoading(false);

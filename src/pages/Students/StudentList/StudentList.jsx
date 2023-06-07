@@ -13,10 +13,12 @@ import { appPath } from "../../../config/appPath";
 import { useDispatch } from "react-redux";
 import { setSelectedItem } from "../../../redux/slices/appSlice";
 import { deleteStudentsService } from "../../../services/studentsService";
+import ModalPopup from "../../../components/ModalPopup/ModalPopup";
 
 const StudentList = () => {
   const [deleteDisable, setDeleteDisable] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
   const { allStudents, getAllStudents, tableLoading } = useStudents();
   const [deleteKey, setDeleteKey] = useState(null);
   const dispatch = useDispatch();
@@ -146,20 +148,21 @@ const StudentList = () => {
     navigate("/student-add");
   };
   const handleDelete = () => {
-    setLoading(true);
-    deleteStudentsService(
-      deleteKey,
-      null,
-      (res) => {
-        setLoading(false);
-        notify.success("Xoá sinh viên thành công!");
-        getAllStudents();
-      },
-      (error) => {
-        setLoading(false);
-        notify.error("Lỗi xoá sinh viên!");
-      }
-    );
+    //setLoading(true);
+    setOpenDialog(true);
+    // deleteStudentsService(
+    //   deleteKey,
+    //   null,
+    //   (res) => {
+    //     setLoading(false);
+    //     notify.success("Xoá sinh viên thành công!");
+    //     getAllStudents();
+    //   },
+    //   (error) => {
+    //     setLoading(false);
+    //     notify.error("Lỗi xoá sinh viên!");
+    //   }
+    // );
   };
   const handleExport = () => {
     axios({
@@ -191,15 +194,24 @@ const StudentList = () => {
             <img src={exportIcon} alt="Export Icon" />
             Export
           </Button>
-          <Button
-            className="options"
-            disabled={deleteDisable}
-            onClick={handleDelete}
-            loading={loading}
-          >
-            <img src={deleteIcon} alt="Delete Icon" />
-            Delete
-          </Button>
+          <ModalPopup
+            buttonOpenModal={
+              <Button
+                className="options"
+                disabled={deleteDisable}
+                onClick={handleDelete}
+                loading={loading}
+              >
+                <img src={deleteIcon} alt="Delete Icon" />
+                Delete
+              </Button>}
+            title="Delete Student"
+            message={"Are you sure to remove this student and all of its related data? "}
+            confirmMessage={"This action cannot be undone"}
+            icon={deleteIcon}
+            ok={"Ok"}
+          // onAccept={ }
+          />
           <Button className="options" onClick={handleClickAddStudent}>
             <img src={addIcon} alt="Add Icon" />
             Add Student
@@ -219,6 +231,7 @@ const StudentList = () => {
           loading={tableLoading}
         />
       </div>
+
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import "./ModalPopup.scss";
-import closeIconPopup from "../../asset/images/close-icon.svg";
+import closeIconPopup from "../../assets/images/close-icon.svg";
 
 const ModalPopup = ({
   buttonOpenModal,
@@ -44,7 +44,7 @@ const ModalPopup = ({
         {buttonOpenModal}
       </div>
       <Modal
-        bodyStyle={{ width: "989px", height: "220px" }}
+        bodyStyle={{ height: "220px" }}
         open={open}
         ok={ok}
         title={title}
