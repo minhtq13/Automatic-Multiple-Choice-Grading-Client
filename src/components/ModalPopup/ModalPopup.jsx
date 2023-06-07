@@ -11,18 +11,12 @@ const ModalPopup = ({
   icon,
   confirmMessage,
   ok,
-
-  showModalDeleteLocation = Function,
 }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const showModal = () => {
-    if (showModalDeleteLocation()) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
+    setOpen(true);
   };
 
   const handleOk = () => {
@@ -31,7 +25,7 @@ const ModalPopup = ({
     setTimeout(() => {
       setLoading(false);
       setOpen(false);
-    }, 200);
+    }, 500);
   };
 
   const handleCancel = () => {

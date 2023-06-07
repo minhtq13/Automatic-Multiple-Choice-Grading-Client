@@ -6,19 +6,19 @@ import useStudents from "../../../hooks/useStudents";
 import exportIcon from "../../../assets/images/export-icon.svg";
 import deleteIcon from "../../../assets/images/delete-icon.svg";
 import addIcon from "../../../assets/images/add-icon.svg";
+import deletePopUpIcon from "../../../assets/images/delete-popup-icon.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useNotify from "../../../hooks/useNotify";
 import { appPath } from "../../../config/appPath";
 import { useDispatch } from "react-redux";
 import { setSelectedItem } from "../../../redux/slices/appSlice";
+
 import { deleteStudentsService } from "../../../services/studentsService";
 import ModalPopup from "../../../components/ModalPopup/ModalPopup";
 
 const StudentList = () => {
   const [deleteDisable, setDeleteDisable] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
   const { allStudents, getAllStudents, tableLoading } = useStudents();
   const [deleteKey, setDeleteKey] = useState(null);
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const StudentList = () => {
     {
       title: "MSSV",
       dataIndex: "code",
-      key: "code"
+      key: "code",
     },
     {
       title: "Full Name",
@@ -148,21 +148,17 @@ const StudentList = () => {
     navigate("/student-add");
   };
   const handleDelete = () => {
-    //setLoading(true);
-    setOpenDialog(true);
-    // deleteStudentsService(
-    //   deleteKey,
-    //   null,
-    //   (res) => {
-    //     setLoading(false);
-    //     notify.success("Xoá sinh viên thành công!");
-    //     getAllStudents();
-    //   },
-    //   (error) => {
-    //     setLoading(false);
-    //     notify.error("Lỗi xoá sinh viên!");
-    //   }
-    // );
+    deleteStudentsService(
+      deleteKey,
+      null,
+      (res) => {
+        notify.success("Xoá sinh viên thành công!");
+        getAllStudents();
+      },
+      (error) => {
+        notify.error("Lỗi xoá sinh viên!");
+      }
+    );
   };
   const handleExport = () => {
     axios({
@@ -196,21 +192,17 @@ const StudentList = () => {
           </Button>
           <ModalPopup
             buttonOpenModal={
-              <Button
-                className="options"
-                disabled={deleteDisable}
-                onClick={handleDelete}
-                loading={loading}
-              >
+              <Button className="options" disabled={deleteDisable}>
                 <img src={deleteIcon} alt="Delete Icon" />
                 Delete
-              </Button>}
+              </Button>
+            }
             title="Delete Student"
             message={"Are you sure to remove this student and all of its related data? "}
             confirmMessage={"This action cannot be undone"}
-            icon={deleteIcon}
+            icon={deletePopUpIcon}
             ok={"Ok"}
-          // onAccept={ }
+            onAccept={handleDelete}
           />
           <Button className="options" onClick={handleClickAddStudent}>
             <img src={addIcon} alt="Add Icon" />
@@ -231,7 +223,6 @@ const StudentList = () => {
           loading={tableLoading}
         />
       </div>
-
     </div>
   );
 };
