@@ -6,6 +6,7 @@ import { loginAuthenticService } from "../../services/accountServices";
 import useNotify from "../../hooks/useNotify";
 import { appPath } from "../../config/appPath";
 import { useNavigate } from "react-router-dom";
+import { setRefeshToken, setToken } from "../../utils/storage";
 
 const Login = () => {
 	const [loading, setLoading] = useState(false);
@@ -21,6 +22,8 @@ const Login = () => {
 				setAuthenticResult(res.data.message);
 				notify.success(`Đăng nhập thành công!`);
 				navigate(appPath.default);
+				setToken(res.data.access_token)
+				setRefeshToken(res.data.refresh_token)
 			},
 			(error) => {
 				setLoading(false);

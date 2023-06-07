@@ -39,6 +39,11 @@ const StudentList = () => {
 
   const columns = [
     {
+      title: "MSSV",
+      dataIndex: "code",
+      key: "code"
+    },
+    {
       title: "Full Name",
       dataIndex: "fullName",
       key: "fullName",

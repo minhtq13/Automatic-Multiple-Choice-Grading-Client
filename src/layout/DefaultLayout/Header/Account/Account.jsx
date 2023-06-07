@@ -6,6 +6,7 @@ import {
 import { Avatar, Dropdown } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./Account.scss";
+import { clearUserInfo } from "../../../../utils/storage";
 const user = {
 	name: "Nguyen Van A",
 	avatar: "https://static1.dienanh.net/upload/202203/db8fd584-5830-40b0-b5e8-c42885d676b4.jpeg",
@@ -27,7 +28,7 @@ const Account = () => {
 					</div>
 				</div>
 			),
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			key: 2,
@@ -37,7 +38,7 @@ const Account = () => {
 					<div className="a-account-content">My Profile</div>
 				</div>
 			),
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			key: 3,
@@ -47,7 +48,7 @@ const Account = () => {
 					<div className="a-account-content">Setting</div>
 				</div>
 			),
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			key: 4,
@@ -59,6 +60,7 @@ const Account = () => {
 			),
 			onClick: () => {
 				navigate("/login");
+				clearUserInfo()
 			},
 		},
 	];
