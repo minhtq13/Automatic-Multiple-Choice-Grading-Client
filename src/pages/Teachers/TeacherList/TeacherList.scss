@@ -1,0 +1,42 @@
+.a-teacher-list {
+  .header-teacher-list {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    p {
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--hust-color);
+    }
+    .block-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .options {
+        color: var(--hust-color);
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        gap: 6px;
+      }
+    }
+  }
+  .teacher-list-table {
+    border: 1px solid #ccc;
+    padding: 12px;
+    .ant-table-content {
+      min-height: 500px;
+    }
+
+    .ant-pagination-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ant-table-pagination.ant-pagination {
+      margin: 12px 0;
+    }
+  }
+}

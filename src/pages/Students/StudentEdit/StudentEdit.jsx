@@ -50,9 +50,11 @@ const StudentEdit = () => {
 					email: selectedItem ? selectedItem.email : "",
 					code: selectedItem ? selectedItem.code : "",
 					phoneNumber: selectedItem ? selectedItem.phoneNumber : "",
-					birthday: selectedItem ? dayjs(selectedItem.birthday, "YYYY-MM-DD") : ""
+					birthday: selectedItem ? dayjs(selectedItem.birthday, "YYYY-MM-DD") : "",
+					gender: selectedItem ? selectedItem.gender[0] : null
 				}}
 				loading={loading}
+				isPasswordDisplay={false}
 			/>
 		</div>
 	);

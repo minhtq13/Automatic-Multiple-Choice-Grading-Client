@@ -11,4 +11,10 @@ export const apiPath = {
 	updateStudent: BASE_URL + "/api/v1/student/update/",
 	addStudent: BASE_URL + "/api/v1/student/add",
 	deleteStudent: BASE_URL + "/api/v1/student/disable/",
+	exportStudents: BASE_URL + "api/v1/student/export",
+	//Teacher:
+	allTeachers: BASE_URL + "/api/v1/teacher/list",
+	updateTeacher: BASE_URL + "/api/v1/teacher/update/",
+	addTeacher: BASE_URL + "/api/v1/teacher/add",
+	deleteTeacher: BASE_URL + "/api/v1/teacher/disable/"
 };

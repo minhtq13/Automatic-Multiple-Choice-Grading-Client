@@ -1,91 +1,85 @@
 export const checkDataInLocalStorage = (data) => {
-    if (
-        !data ||
-        data === null ||
-        data === undefined ||
-        data === "null" ||
-        data === "undefined"
-    ) {
-        return false;
-    }
-    return true;
+  if (
+    !data ||
+    data === null ||
+    data === undefined ||
+    data === "null" ||
+    data === "undefined"
+  ) {
+    return false;
+  }
+  return true;
 };
 
 export const saveUserInfo = (
-    username,
-    email,
-    phone,
-    gender,
-    birthday,
-    role,
-    id
+  username,
+  email,
+  phone,
+  gender,
+  birthday,
+  role,
+  id
 ) => {
-    localStorage.setItem("username", username);
-    localStorage.setItem("email", email);
-    localStorage.setItem("phone", phone);
-    localStorage.setItem("gender", gender);
-    localStorage.setItem("birthday", birthday);
-    localStorage.setItem("role", role);
-    localStorage.setItem("id", id);
+  localStorage.setItem("username", username);
+  localStorage.setItem("email", email);
+  localStorage.setItem("phone", phone);
+  localStorage.setItem("gender", gender);
+  localStorage.setItem("birthday", birthday);
+  localStorage.setItem("role", role);
+  localStorage.setItem("id", id);
 };
 
 export const getUserName = () => {
-    return localStorage.getItem("username");
+  return localStorage.getItem("username");
 };
 export const getRole = () => {
-    return localStorage.getItem("role");
+  return localStorage.getItem("role");
 };
 
 export const getUserInfo = () => {
-    const userInfo = {
-        userName: localStorage.getItem("username"),
-        email: localStorage.getItem("email"),
-        phone: localStorage.getItem("phone"),
-        gender: localStorage.getItem("gender"),
-        birthday: localStorage.getItem("birthday"),
-        role: localStorage.getItem("role"),
-    };
+  const userInfo = {
+    userName: localStorage.getItem("username"),
+    email: localStorage.getItem("email"),
+    phone: localStorage.getItem("phone"),
+    gender: localStorage.getItem("gender"),
+    birthday: localStorage.getItem("birthday"),
+    role: localStorage.getItem("role"),
+  };
 
-    return userInfo;
+  return userInfo;
 };
 
 export const clearUserInfo = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
-    localStorage.removeItem("birthday");
-    localStorage.removeItem("gender");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("id");
-    localStorage.removeItem("_token");
-    localStorage.removeItem("role");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
 };
 
 export const saveUsername = (username) => {
-    localStorage.setItem("username_rmb", username);
+  localStorage.setItem("username_rmb", username);
 };
 
 export const clearUsername = () => {
-    localStorage.removeItem("username_rmb");
+  localStorage.removeItem("username_rmb");
 };
 
 export const getToken = () => {
-    const token = localStorage.getItem("_token");
-    return token;
+  const token = localStorage.getItem("access_token");
+  return token;
 };
 
 export const getTokenType = () => {
-    const tokenType = localStorage.getItem("_token_type");
-    return tokenType;
+  const tokenType = localStorage.getItem("_token_type");
+  return tokenType;
 };
 
 export const getRefreshToken = () => {
-    const rfToken = localStorage.getItem("_refreshToken");
-    return rfToken;
+  const rfToken = localStorage.getItem("refresh_token");
+  return rfToken;
 };
 
 export const getTimeExpr = () => {
-    const time = localStorage.getItem("_timeExpr");
-    return time;
+  const time = localStorage.getItem("_timeExpr");
+  return time;
 };
 
 // export const getUserInfo = () => {
@@ -113,11 +107,11 @@ export const getTimeExpr = () => {
 // };
 
 export const setToken = (token) => {
-    localStorage.setItem("_token", token);
+  localStorage.setItem("access_token", token);
 };
 
 export const setRefeshToken = (refeshToken) => {
-    localStorage.setItem("_refeshToken", refeshToken);
+  localStorage.setItem("refresh_token", refeshToken);
 };
 
 // export const getUid = () => {
@@ -128,9 +122,9 @@ export const setRefeshToken = (refeshToken) => {
 //   return "";
 // };
 export const getAuthenticationName = () => {
-    const username = localStorage.getItem("authenticationName");
-    if (checkDataInLocalStorage(username)) {
-        return username;
-    }
-    return "";
+  const username = localStorage.getItem("authenticationName");
+  if (checkDataInLocalStorage(username)) {
+    return username;
+  }
+  return "";
 };

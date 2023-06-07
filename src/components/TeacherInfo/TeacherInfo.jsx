@@ -1,7 +1,7 @@
 import { DatePicker, Form, Input, Select, Button } from "antd";
-import "./StudentInfo.scss";
+import "./TeacherInfo.scss";
 import React from "react";
-const StudentInfo = ({
+const TeacherInfo = ({
   onFinish,
   initialValues,
   infoHeader,
@@ -24,15 +24,15 @@ const StudentInfo = ({
   const dateFormat = "YYYY-MM-DD";
 
   return (
-    <div className="a-student-info">
+    <div className="a-teacher-info">
       <p className="a-info-header">{infoHeader}</p>
       <Form
-        name="info-student-form"
-        className="info-student-form"
+        name="info-teacher-form"
+        className="info-teacher-form"
         initialValues={initialValues}
         onFinish={onFinish}
       >
-        <div className="a-info-student-header">Thông tin sinh viên</div>
+        <div className="a-info-teacher-header">Thông tin giảng viên</div>
         <Form.Item
           name="fullName"
           label="Full Name"
@@ -50,7 +50,7 @@ const StudentInfo = ({
         >
           <Input placeholder="Enter user name" />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="code"
           label="MSSV"
           colon={true}
@@ -66,8 +66,7 @@ const StudentInfo = ({
           ]}
         >
           <Input placeholder="Enter MSSV" />
-        </Form.Item>
-
+        </Form.Item> */}
         <Form.Item
           name="username"
           label="User Name"
@@ -176,4 +175,4 @@ const StudentInfo = ({
     </div>
   );
 };
-export default StudentInfo;
+export default TeacherInfo;

@@ -38,6 +38,7 @@ const StudentAdd = () => {
 				btnText="Thêm"
 				initialValues={{ remember: false }}
 				loading={loading}
+				isPasswordDisplay={true}
 			/>
 		</div>
 	);
