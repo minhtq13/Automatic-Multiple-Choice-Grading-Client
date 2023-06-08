@@ -1,8 +1,15 @@
 import { UploadOutlined } from "@ant-design/icons";
-import { Button, Form, Input, message, Upload } from "antd";
+import { Button, Form, Input, message, Select, Space, Upload } from "antd";
 import { useState } from "react";
+import iconCheck from "../..//assets/images/iconCheck.svg";
+import exportIcon from "../../assets/images/export-icon.svg";
+import iconArrow from "../../assets/images/arrow-under-header.svg";
+import iconCheckAct from "../../assets/images/arrow-under.svg";
 import useAI from "../../hooks/useAI";
+import "./ExamList.scss";
+import TableResult from "./TableResult";
 
+const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -14,6 +21,7 @@ const formItemLayout = {
 
 const ExamList = () => {
   const [urlImg, setUrlImg] = useState();
+  const [numberAnswer, setNumberAnswer] = useState(120);
   const { getModelAI, resultAI } = useAI();
   const props = {
     name: "files",
@@ -30,7 +38,6 @@ const ExamList = () => {
     onChange(info) {
       if (info.file.status !== "uploading") {
         setUrlImg(info.file.name);
-        // console.log(info.file);
       }
       if (info.file.status === "done") {
         message.success(`${info.file.name} file uploaded successfully`);
@@ -41,7 +48,7 @@ const ExamList = () => {
   };
 
   const onFinish = (values) => {
-    console.log(values);
+    setNumberAnswer(values.numberAnswer);
     if (urlImg) {
       getModelAI({
         pathImg: urlImg,
@@ -49,30 +56,196 @@ const ExamList = () => {
       });
     }
   };
-  console.log(resultAI);
+  const [type, setType] = useState("ktdtvt");
+  const [secondType, setSecondType] = useState("Chọn mã học phần");
+  const [isActive, setIsActive] = useState(0);
+
+  const handleChangeFirstSelect = (value) => {
+    setType(value);
+    setSecondType("Chọn mã học phần");
+  };
+  const handleChangeSecondSelect = (value) => {
+    setSecondType(value);
+  };
+  const dataSelectCTDT = [
+    {
+      title: "Chương trình chuẩn Kỹ thuật Điện tử Viễn thông",
+      value: "ktdtvt",
+    },
+    {
+      title: "Chương trình liên kết quốc tế với Đại học Leibniz Hannover, CHLB Đức",
+      value: "lkqt",
+    },
+    {
+      title: "Chương trình tài năng Hệ thống Điện tử thông minh và IoT",
+      value: "iot",
+    },
+    {
+      title: "Chương trình tiên tiến Kỹ thuật Điện tử Viễn thông (ET-E4)",
+      value: "dtvttt",
+    },
+    {
+      title: "Chương trình tiên tiến Hệ thống nhúng thông minh và IoT (ET-E9)",
+      value: "ttiot",
+    },
+    {
+      title: "Chương trình tiên tiến Kỹ thuật Y sinh (ET-E5)",
+      value: "ktys",
+    },
+    {
+      title: "Chương trình tiên tiến Truyền thông số và Kỹ thuật Đa phương tiện (ET-E16) ",
+      value: "ttdpt",
+    },
+  ];
+  const dataSelectKTDTVT = [
+    {
+      title: "Hệ thống Nhúng",
+      value: "ET123",
+    },
+    {
+      title: "KTMT",
+      value: "ET133",
+    },
+  ];
+  const dataSelectLKQT = [
+    {
+      title: "Tiếng Anh",
+      value: "ET465",
+    },
+    {
+      title: "Điện tử tương tự",
+      value: "ET231",
+    },
+  ];
+  const getDataMap = () => {
+    switch (type) {
+      case "ktdtvt":
+        return dataSelectKTDTVT;
+      case "lkqt":
+        return dataSelectLKQT;
+      default:
+        return dataSelectKTDTVT;
+    }
+  };
 
   return (
-    <Form name="validate_other" {...formItemLayout} onFinish={onFinish}>
-      <Form.Item name="pathImg">
-        <Upload {...props}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload>
-      </Form.Item>
-      <Form.Item
-        name="numberAnswer"
-        label="Number Answer"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input type="number" />
-      </Form.Item>
-      <Button type="primary" htmlType="submit" style={{ width: "100px" }}>
-        Submit
-      </Button>
-    </Form>
+    <div className="exam-list-wrapper">
+      <div className="header-exam-list">
+        <p>Chấm điểm tự động</p>
+      </div>
+      <div className="block-select">
+        <p>Trường Điện - Điện Tử</p>
+        <div className="block-button">
+          <Space>
+            <div className="detail-button">Chương trình đào tạo: </div>
+            <Select
+              optionLabelProp="label"
+              suffixIcon={<img src={iconArrow} alt="" />}
+              className="custom-select-antd"
+              defaultValue="ktdtvt"
+              onChange={handleChangeFirstSelect}
+              style={{ width: 520 }}
+            >
+              {dataSelectCTDT.map((item, index) => {
+                return (
+                  <Option value={item.value} label={item.title} key={index}>
+                    <div
+                      className="d-flex item_DropBar dropdown-option"
+                      onMouseEnter={() => {
+                        setIsActive(index);
+                      }}
+                    >
+                      <div
+                        className="dropdown-option-item text-14"
+                        style={isActive === index ? { color: "#8c1515" } : {}}
+                      >
+                        {item.title}
+                      </div>
+                      {type === item.value ? (
+                        <img src={isActive === index ? iconCheckAct : iconCheck} alt="" />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </Option>
+                );
+              })}
+            </Select>
+          </Space>
+
+          <Space>
+            <div className="detail-button">Mã học phần: </div>
+            <Select
+              value={secondType}
+              optionLabelProp="label"
+              onChange={handleChangeSecondSelect}
+              className="custom-select-antd"
+              suffixIcon={<img src={iconArrow} alt="" />}
+              style={{ width: 200 }}
+            >
+              {getDataMap().map((item, index) => {
+                return (
+                  <Option value={item.value} label={item.title} key={index}>
+                    <div
+                      className="d-flex item_DropBar dropdown-option"
+                      onMouseEnter={() => {
+                        setIsActive(index);
+                      }}
+                    >
+                      <div
+                        className="dropdown-option-item text-14"
+                        style={isActive === index ? { color: "#8c1515 " } : {}}
+                      >
+                        {item.title}
+                      </div>
+                      {secondType === item.value ? (
+                        <img src={isActive === index ? iconCheckAct : iconCheck} alt="" />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </Option>
+                );
+              })}
+            </Select>
+          </Space>
+          <Button className="options">
+            <img src={exportIcon} alt="Export Icon" />
+            Export
+          </Button>
+        </div>
+      </div>
+      <div className="content-exam-list">
+        <Form name="validate_other" {...formItemLayout} onFinish={onFinish}>
+          <div className="upload">
+            <Form.Item name="pathImg">
+              <Upload {...props}>
+                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+              </Upload>
+            </Form.Item>
+          </div>
+          <div className="number-answer">
+            <Form.Item
+              name="numberAnswer"
+              label="Number Answer"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </div>
+          <Button type="primary" htmlType="submit" style={{ width: "100px" }}>
+            Submit
+          </Button>
+        </Form>
+        <div className="result-ai">
+          <TableResult resultAI={resultAI} numberAnswer={numberAnswer} />
+        </div>
+      </div>
+    </div>
   );
 };
 

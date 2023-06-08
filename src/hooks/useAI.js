@@ -4,7 +4,7 @@ import useNotify from "./useNotify";
 
 const useAI = () => {
   const notify = useNotify();
-  const [resultAI, setResultAI] = useState([]);
+  const [resultAI, setResultAI] = useState();
 
   const getModelAI = (payload = {}) => {
     getModelAIService(
