@@ -69,31 +69,31 @@ const ExamList = () => {
   };
   const dataSelectCTDT = [
     {
-      title: "Chương trình chuẩn Kỹ thuật Điện tử Viễn thông",
+      title: "CT chuẩn Kỹ thuật Điện tử Viễn thông",
       value: "ktdtvt",
     },
     {
-      title: "Chương trình liên kết quốc tế với Đại học Leibniz Hannover, CHLB Đức",
+      title: "CT liên kết quốc tế với Đại học Leibniz Hannover, CHLB Đức",
       value: "lkqt",
     },
     {
-      title: "Chương trình tài năng Hệ thống Điện tử thông minh và IoT",
+      title: "CT tài năng Hệ thống Điện tử thông minh và IoT",
       value: "iot",
     },
     {
-      title: "Chương trình tiên tiến Kỹ thuật Điện tử Viễn thông (ET-E4)",
+      title: "CT tiên tiến Kỹ thuật Điện tử Viễn thông (ET-E4)",
       value: "dtvttt",
     },
     {
-      title: "Chương trình tiên tiến Hệ thống nhúng thông minh và IoT (ET-E9)",
+      title: "CT tiên tiến Hệ thống nhúng thông minh và IoT (ET-E9)",
       value: "ttiot",
     },
     {
-      title: "Chương trình tiên tiến Kỹ thuật Y sinh (ET-E5)",
+      title: "CT tiên tiến Kỹ thuật Y sinh (ET-E5)",
       value: "ktys",
     },
     {
-      title: "Chương trình tiên tiến Truyền thông số và Kỹ thuật Đa phương tiện (ET-E16) ",
+      title: "CT tiên tiến Truyền thông số và Kỹ thuật Đa phương tiện (ET-E16) ",
       value: "ttdpt",
     },
   ];
@@ -137,14 +137,14 @@ const ExamList = () => {
         <p>Trường Điện - Điện Tử</p>
         <div className="block-button">
           <Space>
-            <div className="detail-button">Chương trình đào tạo: </div>
+            <div className="detail-button">CTDT: </div>
             <Select
               optionLabelProp="label"
               suffixIcon={<img src={iconArrow} alt="" />}
               className="custom-select-antd"
               defaultValue="ktdtvt"
               onChange={handleChangeFirstSelect}
-              style={{ width: 520 }}
+              style={{ width: 450 }}
             >
               {dataSelectCTDT.map((item, index) => {
                 return (
