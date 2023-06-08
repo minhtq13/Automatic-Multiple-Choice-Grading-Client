@@ -13,7 +13,7 @@ export const apiPath = {
   deleteStudent: BASE_URL + "/api/v1/student/disable/",
   exportStudents: BASE_URL + "api/v1/student/export",
   // AI
-  getModelAI: BASE_URL + "/api/v1/test/chamdiem",
+  getModelAI: BASE_URL + "/api/v1/test/mark-ai",
   //Teacher:
   allTeachers: BASE_URL + "/api/v1/teacher/list",
   updateTeacher: BASE_URL + "/api/v1/teacher/update/",
