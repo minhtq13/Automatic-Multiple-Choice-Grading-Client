@@ -22,7 +22,7 @@ const formItemLayout = {
 const ExamList = () => {
   const [urlImg, setUrlImg] = useState();
   const [numberAnswer, setNumberAnswer] = useState(120);
-  const { getModelAI, resultAI } = useAI();
+  const { getModelAI, resultAI, loading } = useAI();
   const props = {
     name: "files",
     listType: "picture",
@@ -77,23 +77,23 @@ const ExamList = () => {
       value: "lkqt",
     },
     {
-      title: "CT tài năng Hệ thống Điện tử thông minh và IoT",
+      title: "CTTN Hệ thống Điện tử thông minh và IoT",
       value: "iot",
     },
     {
-      title: "CT tiên tiến Kỹ thuật Điện tử Viễn thông (ET-E4)",
+      title: "CTTT Kỹ thuật Điện tử Viễn thông (ET-E4)",
       value: "dtvttt",
     },
     {
-      title: "CT tiên tiến Hệ thống nhúng thông minh và IoT (ET-E9)",
+      title: "CTTT Hệ thống nhúng thông minh và IoT (ET-E9)",
       value: "ttiot",
     },
     {
-      title: "CT tiên tiến Kỹ thuật Y sinh (ET-E5)",
+      title: "CTTT Kỹ thuật Y sinh (ET-E5)",
       value: "ktys",
     },
     {
-      title: "CT tiên tiến Truyền thông số và Kỹ thuật Đa phương tiện (ET-E16) ",
+      title: "CTTT Truyền thông số và Kỹ thuật Đa phương tiện (ET-E16)",
       value: "ttdpt",
     },
   ];
@@ -131,10 +131,10 @@ const ExamList = () => {
   return (
     <div className="exam-list-wrapper">
       <div className="header-exam-list">
-        <p>Chấm điểm tự động</p>
+        <h2>Chấm điểm tự động</h2>
       </div>
       <div className="block-select">
-        <p>Trường Điện - Điện Tử</p>
+        <div className="name-school">Trường Điện - Điện Tử</div>
         <div className="block-button">
           <Space>
             <div className="detail-button">CTDT: </div>
@@ -144,7 +144,7 @@ const ExamList = () => {
               className="custom-select-antd"
               defaultValue="ktdtvt"
               onChange={handleChangeFirstSelect}
-              style={{ width: 450 }}
+              style={{ width: 400 }}
             >
               {dataSelectCTDT.map((item, index) => {
                 return (
@@ -237,7 +237,7 @@ const ExamList = () => {
               <Input type="number" />
             </Form.Item>
           </div>
-          <Button type="primary" htmlType="submit" style={{ width: "100px" }}>
+          <Button type="primary" htmlType="submit" loading={loading} style={{ width: "100px" }}>
             Submit
           </Button>
         </Form>
