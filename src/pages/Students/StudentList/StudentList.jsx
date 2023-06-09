@@ -134,7 +134,7 @@ const StudentList = () => {
     if (newSelectedRowKeys.length === 1) {
       setDeleteKey(dataFetch.find((item) => item.key === newSelectedRowKeys[0]).id);
       setDeleteDisable(false);
-      console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]));
+      // console.log(dataFetch.find((item) => item.key === newSelectedRowKeys[0]));
     } else {
       setDeleteDisable(true);
     }

@@ -1,0 +1,106 @@
+.exam-list-wrapper {
+  .header-exam-list {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--hust-color);
+    }
+    .block-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .options {
+        color: var(--hust-color);
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        gap: 6px;
+      }
+    }
+  }
+  .block-select {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    .name-school {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--hust-color);
+    }
+
+    .block-button {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+      .detail-button {
+        font-size: 14px;
+        color: #a19898;
+        margin-right: 10px;
+      }
+      .options {
+        border: none;
+        outline: none;
+        padding: 7px 17px;
+        height: 42px;
+        background: #ffffff;
+        border-radius: 6px;
+        color: var(--hust-color);
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      .custom-select-antd {
+        .ant-select-selector {
+          border: none;
+          outline: none;
+          padding: 7px 17px;
+          height: 42px;
+          background: #ffffff;
+          border-radius: 6px;
+          .ant-select-selection-item {
+            min-width: 120px;
+            color: #636672;
+            font-size: 14px;
+            margin-right: 10px !important;
+            display: flex;
+            align-items: center;
+            padding-right: 0px;
+          }
+        }
+        .ant-select-arrow {
+          right: 10px;
+        }
+      }
+    }
+  }
+  .content-exam-list {
+    min-height: 70vh;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 32px;
+    .upload {
+      width: 300px;
+    }
+    .number-answer {
+      width: 500px;
+      input {
+        width: 200px;
+      }
+    }
+  }
+}
+.item_DropBar {
+  display: flex;
+  justify-content: space-between;
+}
