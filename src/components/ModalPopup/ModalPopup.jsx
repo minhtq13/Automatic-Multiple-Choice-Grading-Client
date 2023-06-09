@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import "./ModalPopup.scss";
-import closeIconPopup from "../../asset/images/close-icon.svg";
+import closeIconPopup from "../../assets/images/close-icon.svg";
 
 const ModalPopup = ({
   buttonOpenModal,
@@ -11,18 +11,12 @@ const ModalPopup = ({
   icon,
   confirmMessage,
   ok,
-
-  showModalDeleteLocation = Function,
 }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const showModal = () => {
-    if (showModalDeleteLocation()) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
+    setOpen(true);
   };
 
   const handleOk = () => {
@@ -31,7 +25,7 @@ const ModalPopup = ({
     setTimeout(() => {
       setLoading(false);
       setOpen(false);
-    }, 200);
+    }, 500);
   };
 
   const handleCancel = () => {
@@ -44,7 +38,7 @@ const ModalPopup = ({
         {buttonOpenModal}
       </div>
       <Modal
-        bodyStyle={{ width: "989px", height: "220px" }}
+        bodyStyle={{ height: "220px" }}
         open={open}
         ok={ok}
         title={title}

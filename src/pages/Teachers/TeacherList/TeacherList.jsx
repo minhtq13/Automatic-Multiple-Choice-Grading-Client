@@ -148,6 +148,7 @@ const TeacherList = () => {
         setLoading(false);
         notify.success("Xoá giảng viên thành công!");
         getAllTeachers();
+        setSelectedRowKeys([]);
       },
       (error) => {
         setLoading(false);
