@@ -8,15 +8,20 @@ export const apiPath = {
   refreshToken: BASE_URL + "/api/v1/auth/refresh-token",
   // Student
   allStudents: BASE_URL + "/api/v1/student/list",
-  updateStudent: BASE_URL + "/api/v1/student/update/",
+  updateStudent: BASE_URL + "/api/v1/student/update",
   addStudent: BASE_URL + "/api/v1/student/add",
-  deleteStudent: BASE_URL + "/api/v1/student/disable/",
+  deleteStudent: BASE_URL + "/api/v1/student/disable",
   exportStudents: BASE_URL + "api/v1/student/export",
   // AI
   getModelAI: BASE_URL + "/api/v1/test/chamdiem",
   //Teacher:
   allTeachers: BASE_URL + "/api/v1/teacher/list",
-  updateTeacher: BASE_URL + "/api/v1/teacher/update/",
+  updateTeacher: BASE_URL + "/api/v1/teacher/update",
   addTeacher: BASE_URL + "/api/v1/teacher/add",
-  deleteTeacher: BASE_URL + "/api/v1/teacher/disable/",
+  deleteTeacher: BASE_URL + "/api/v1/teacher/disable",
+  //Subject: 
+  allSubjects: BASE_URL + "/api/v1/subject/list",
+  updateSubject: BASE_URL + "/api/v1/subject/update",
+  deleteSubject: BASE_URL + "/api/v1/subject/disable",
+  addSubject: BASE_URL + "/api/v1/subject/add"
 };

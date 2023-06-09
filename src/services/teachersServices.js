@@ -25,7 +25,7 @@ export const updateTeachersService = async (
   errorCallback
 ) => {
   await putRequest(
-    `${apiPath.updateTeacher}${teacherId}`,
+    `${apiPath.updateTeacher}/${teacherId}`,
     params,
     successCallback,
     errorCallback,
@@ -52,7 +52,7 @@ export const deleteTeachersService = async (
   errorCallback
 ) => {
   await deleteRequest(
-    `${apiPath.deleteTeacher}${teacherId}`,
+    `${apiPath.deleteTeacher}/${teacherId}`,
     params,
     successCallback,
     errorCallback,
